@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] GameObject optionMenu;
-    [SerializeField] GameObject optionMenuBG;
-    [SerializeField] GameObject addCardMenu;
-    [SerializeField] GameObject MainMenu;
-    [SerializeField] Camera camera;
-    RaycastHit2D hit;
-    private bool GUIon;
+    [SerializeField] private GameObject optionMenu;
+    [SerializeField] private GameObject optionMenuBG;
+    [SerializeField] private GameObject addCardMenu;
+    [SerializeField] private GameObject MainMenu;
+    [SerializeField] private GameObject AccountsMenu;
+    [SerializeField] public Camera camera;
+
+    
+
     public void OnPlusButton()
     {
         optionMenu.SetActive(true);
@@ -27,6 +29,7 @@ public class UIController : MonoBehaviour
     }
     public void Start()
     {
+        AccountsMenu.SetActive(false);
         optionMenu.SetActive(false);
         optionMenuBG.SetActive(false);
         addCardMenu.SetActive(false);
@@ -36,6 +39,7 @@ public class UIController : MonoBehaviour
 
     public void AddBakiKart()
     {
+        AccountsMenu.SetActive(false);
         optionMenu.SetActive(false);
         optionMenuBG.SetActive(false);
         addCardMenu.SetActive(true);
@@ -44,10 +48,21 @@ public class UIController : MonoBehaviour
 
     public void BackToMenu()
     {
+        AccountsMenu.SetActive(false);
         optionMenu.SetActive(false);
         optionMenuBG.SetActive(false);
         addCardMenu.SetActive(false);
         MainMenu.SetActive(true);
+
+    }
+
+    public void ToAccountsMenu()
+    {
+        AccountsMenu.SetActive(true);
+        optionMenu.SetActive(false);
+        optionMenuBG.SetActive(false);
+        addCardMenu.SetActive(false);
+        MainMenu.SetActive(false);
 
     }
 }
